@@ -1,0 +1,196 @@
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+/* INTRO — tipo escena de película */
+.intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:fadeOut 2s ease 3s forwards;
+}
+
+.intro-text{
+color:white;
+font-size:2.2rem;
+text-align:center;
+opacity:0;
+animation:fadeInText 2.5s ease forwards;
+padding:20px;
+letter-spacing:2px;
+font-weight:300;
+}
+
+@keyframes fadeInText{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* VIDEO FONDO */
+
+.bg-video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+top:0;
+left:0;
+filter:brightness(0.35);
+}
+
+/* Oscurece un poco más — efecto cine */
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,.55),
+rgba(0,0,0,.75)
+);
+}
+
+/* TARJETA — glassmorphism real */
+
+.login-card{
+position:relative;
+z-index:2;
+background:rgba(0,0,0,0.55);
+padding:45px;
+border-radius:24px;
+text-align:center;
+color:white;
+width:90%;
+max-width:420px;
+backdrop-filter: blur(14px);
+box-shadow:0 10px 40px rgba(0,0,0,.6);
+animation:fadeUp 1.6s ease;
+}
+
+/* TITULOS */
+
+.login-card h1{
+margin-bottom:12px;
+font-weight:600;
+}
+
+.login-card p{
+margin-bottom:30px;
+font-weight:300;
+color:#e6e6e6;
+}
+
+/* INPUTS */
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,0.08);
+color:white;
+font-size:15px;
+outline:none;
+transition:.25s;
+}
+
+/* Placeholder suave */
+
+input::placeholder{
+color:rgba(255,255,255,.6);
+}
+
+/* Glow cuando escribe */
+
+input:focus{
+background:rgba(255,255,255,0.14);
+box-shadow:0 0 12px rgba(255,77,109,.35);
+}
+
+/* BOTON — estilo emocional */
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+transition:.3s;
+font-weight:600;
+letter-spacing:.5px;
+}
+
+button:hover{
+background:#ff2e59;
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(255,77,109,.4);
+}
+
+/* ANIMACION TARJETA */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(60px) scale(.96);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+.intro-text{
+font-size:1.7rem;
+}
+
+.login-card{
+padding:30px;
+}
+
+}
