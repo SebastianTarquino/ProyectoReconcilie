@@ -6,414 +6,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-
     /* ================================
-       CONFIGURACIÓN GENERAL
+       CONFIGURACIÓN GENERAL (Tu diseño original)
        ================================ */
-
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 20px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      font-family: "Segoe UI", Arial, sans-serif;
-      color: white;
-
+      margin: 0; min-height: 100vh; padding: 20px;
+      display: flex; justify-content: center; align-items: center;
+      font-family: "Segoe UI", Arial, sans-serif; color: white;
       background:
         radial-gradient(circle at 10% 10%, #5c1a36 0%, transparent 35%),
         radial-gradient(circle at 90% 90%, #3b163d 0%, transparent 35%),
         linear-gradient(135deg, #100912, #24101d, #120b16);
-
-      overflow-x: hidden;
-      position: relative;
+      overflow-x: hidden; position: relative;
     }
 
-
-    /* ================================
-       CORAZONES DECORATIVOS
-       ================================ */
-
-    body::before,
-    body::after {
-      content: "♥";
-      position: fixed;
-      color: rgba(255, 77, 110, 0.10);
-      font-size: 200px;
-      z-index: 0;
-      pointer-events: none;
+    body::before, body::after {
+      content: "♥"; position: fixed; color: rgba(255, 77, 110, 0.10);
+      font-size: 200px; z-index: 0; pointer-events: none;
     }
-
-    body::before {
-      top: -60px;
-      left: -40px;
-      transform: rotate(-20deg);
-    }
-
-    body::after {
-      bottom: -80px;
-      right: -40px;
-      transform: rotate(20deg);
-    }
-
-
-    /* ================================
-       CARTA PRINCIPAL
-       ================================ */
+    body::before { top: -60px; left: -40px; transform: rotate(-20deg); }
+    body::after { bottom: -80px; right: -40px; transform: rotate(20deg); }
 
     .carta-container {
-      width: 100%;
-      max-width: 650px;
-
-      padding: 45px;
-
-      position: relative;
-      z-index: 1;
-
-      text-align: center;
-
+      width: 100%; max-width: 650px; padding: 45px;
+      position: relative; z-index: 1; text-align: center;
       background: rgba(255, 255, 255, 0.07);
-
       border: 1px solid rgba(255, 255, 255, 0.15);
-
       border-radius: 25px;
-
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-
-      box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.55),
-        0 0 40px rgba(255, 50, 100, 0.08);
-
+      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(255, 50, 100, 0.08);
       animation: aparecer 1.2s ease;
     }
 
-
-    /* ================================
-       TÍTULO
-       ================================ */
-
-    h1 {
-      margin-top: 0;
-      margin-bottom: 30px;
-
-      font-size: 36px;
-
-      color: #ff6b8a;
-
-      text-shadow:
-        0 0 10px rgba(255, 107, 138, 0.5),
-        0 0 25px rgba(255, 107, 138, 0.25);
-
+    h1 { margin-top: 0; margin-bottom: 30px; font-size: 36px; color: #ff6b8a;
+      text-shadow: 0 0 10px rgba(255, 107, 138, 0.5), 0 0 25px rgba(255, 107, 138, 0.25);
       animation: latido 2.5s infinite;
     }
-
-
-    /* ================================
-       TEXTO
-       ================================ */
-
-    p {
-      margin: 0;
-
-      font-size: 18px;
-      line-height: 1.8;
-
-      color: #eeeeee;
-
-      text-align: justify;
-    }
-
-
-    /* ================================
-       SECCIÓN DE PROMESAS
-       ================================ */
+    p { margin: 0; font-size: 18px; line-height: 1.8; color: #eeeeee; text-align: justify; }
 
     .promesas {
-      margin-top: 35px;
-      padding: 25px;
-
-      text-align: left;
-
-      background: rgba(0, 0, 0, 0.25);
-
-      border-radius: 18px;
-
-      border-left: 4px solid #ff5c7c;
-
-      box-shadow:
-        inset 0 0 20px rgba(255, 77, 110, 0.04),
-        0 10px 25px rgba(0, 0, 0, 0.2);
+      margin-top: 35px; padding: 25px; text-align: left; background: rgba(0, 0, 0, 0.25);
+      border-radius: 18px; border-left: 4px solid #ff5c7c;
+      box-shadow: inset 0 0 20px rgba(255, 77, 110, 0.04), 0 10px 25px rgba(0, 0, 0, 0.2);
     }
-
-    .promesas h3 {
-      margin-top: 0;
-      margin-bottom: 20px;
-
-      font-size: 22px;
-
-      color: #ff7895;
-    }
-
-    .promesas ul {
-      margin: 0;
-      padding-left: 25px;
-    }
-
-    .promesas li {
-      margin-bottom: 14px;
-
-      color: #dddddd;
-
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .promesas li::marker {
-      color: #ff5c7c;
-    }
-
-
-    /* ================================
-       BOTÓN
-       ================================ */
+    .promesas h3 { margin-top: 0; margin-bottom: 20px; font-size: 22px; color: #ff7895; }
+    .promesas ul { margin: 0; padding-left: 25px; }
+    .promesas li { margin-bottom: 14px; color: #dddddd; font-size: 16px; line-height: 1.5; }
+    .promesas li::marker { color: #ff5c7c; }
 
     .btn-perdon {
-      display: inline-block;
-
-      margin-top: 40px;
-      padding: 16px 32px;
-
-      color: white;
-
-      text-decoration: none;
-
-      font-size: 16px;
-      font-weight: bold;
-
-      background: linear-gradient(
-        135deg,
-        #ff416c,
-        #ff4b5c
-      );
-
-      border-radius: 50px;
-
-      box-shadow:
-        0 8px 25px rgba(255, 65, 108, 0.35);
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+      display: inline-block; margin-top: 40px; padding: 16px 32px; color: white;
+      text-decoration: none; font-size: 16px; font-weight: bold;
+      background: linear-gradient(135deg, #ff416c, #ff4b5c); border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(255, 65, 108, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
+    .btn-perdon:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 12px 35px rgba(255, 65, 108, 0.55); background: linear-gradient(135deg, #ff1744, #ff416c); }
+    .btn-perdon:active { transform: scale(0.97); }
 
-    .btn-perdon:hover {
-      transform: translateY(-4px) scale(1.04);
+    .corazon { display: block; margin: 0 auto 15px auto; font-size: 45px; animation: flotar 2s ease-in-out infinite; }
 
-      box-shadow:
-        0 12px 35px rgba(255, 65, 108, 0.55);
-
-      background: linear-gradient(
-        135deg,
-        #ff1744,
-        #ff416c
-      );
-    }
-
-    .btn-perdon:active {
-      transform: scale(0.97);
-    }
-
-
-    /* ================================
-       PEQUEÑO CORAZÓN
-       ================================ */
-
-    .corazon {
-      display: block;
-
-      margin: 0 auto 15px auto;
-
-      font-size: 45px;
-
-      animation: flotar 2s ease-in-out infinite;
-    }
-
-
-    /* ================================
-       ANIMACIONES
-       ================================ */
-
-    @keyframes aparecer {
-
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.97);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-    }
-
-
-    @keyframes latido {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.03);
-      }
-
-    }
-
-
-    @keyframes flotar {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-
-    }
-
-
-    /* ================================
-       RESPONSIVE / CELULAR
-       ================================ */
+    @keyframes aparecer { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+    @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
     @media (max-width: 600px) {
-
-      body {
-        padding: 15px;
-      }
-
-      .carta-container {
-        padding: 30px 22px;
-        border-radius: 20px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      p {
-        font-size: 16px;
-        line-height: 1.7;
-      }
-
-      .promesas {
-        padding: 20px;
-      }
-
-      .promesas li {
-        font-size: 15px;
-      }
-
-      .btn-perdon {
-        width: 100%;
-        padding: 15px 20px;
-      }
-
-      .corazon {
-        font-size: 38px;
-      }
+      body { padding: 15px; } .carta-container { padding: 30px 22px; border-radius: 20px; }
+      h1 { font-size: 28px; } p { font-size: 16px; line-height: 1.7; }
+      .promesas { padding: 20px; } .promesas li { font-size: 15px; }
+      .btn-perdon { width: 100%; padding: 15px 20px; } .corazon { font-size: 38px; }
     }
 
+    /* ================================
+       NUEVO: OVERLAY "CARTA SELLADA"
+       ================================ */
+    #pantalla-bloqueo {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: #100912; /* Color de fondo oscuro */
+      z-index: 9999;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: opacity 1.5s ease;
+    }
+
+    #btn-abrir {
+      padding: 20px 40px; font-size: 22px; color: white;
+      background: linear-gradient(135deg, #ff416c, #ff4b5c);
+      border: none; border-radius: 50px; cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 65, 108, 0.4);
+      animation: latido 2s infinite; font-weight: bold;
+    }
+
+    #btn-abrir:hover { transform: scale(1.05); }
+
+    /* Ocultamos la carta al inicio */
+    #contenido-carta {
+      opacity: 0; pointer-events: none; transition: opacity 2s ease;
+      width: 100%; display: flex; justify-content: center; align-items: center;
+    }
   </style>
 </head>
 
-
 <body>
 
-  <div class="carta-container">
+  <!-- Audio Oculto (Tu canción) -->
+  <audio id="miMusica" src="/audio/cancion.mp3" loop></audio>
 
-    <!-- Corazón -->
-    <span class="corazon">❤️</span>
-
-    <!-- Título -->
-    <h1>
-      Sabía que no lo habías olvidado...
-    </h1>
-
-      <!-- Música de fondo (YouTube oculto) -->
-  <iframe 
-    width="1" 
-    height="1" 
-    src="https://www.youtube.com/embed/WDdii9sraT0?autoplay=1&loop=1" 
-    frameborder="0" 
-    allow="autoplay" 
-    style="position: absolute; opacity: 0; pointer-events: none;">
-  </iframe>
-
-    <!-- Mensaje -->
-    <p>
-      Hola de nuevo. Si estás leyendo esto, es porque lograste entrar.
-      <br><br>
-
-      Sé que las cosas no terminaron de la mejor manera, pero hice esta
-      pequeña página para decirte lo mucho que me importas.
-
-      A veces es difícil decir las cosas en persona, así que dejé que mi
-      código hablara por mí. ❤️
-    </p>
-
-
-    <!-- Promesas -->
-    <div class="promesas">
-
-      <h3>
-        Mis Promesas ❤️
-      </h3>
-
-      <ul>
-
-        <li>
-          Escucharte más y entenderte mejor.
-        </li>
-
-        <li>
-          No pelear por bobadas
-          (y aceptar cuando tienes la razón,
-          que es casi siempre).
-        </li>
-
-        <li>
-          Hacer que cada día cuente cuando estemos juntos.
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <!-- Botón WhatsApp -->
-    <a
-      href="https://wa.me/573143064028?text=Vi%20la%20pagina%20que%20me%20creaste...%20y%20tenemos%20que%20hablar%20❤️"
-      class="btn-perdon"
-      target="_blank"
-    >
-      ¿Te parece si hablamos? ❤️
-    </a>
-
+  <!-- Pantalla inicial que bloquea todo -->
+  <div id="pantalla-bloqueo">
+    <button id="btn-abrir">💌 Toca para abrir la carta</button>
   </div>
+
+  <!-- Contenedor que envuelve toda tu carta para que aparezca después -->
+  <div id="contenido-carta">
+    <div class="carta-container">
+      <span class="corazon">❤️</span>
+      <h1>Sabía que no lo habías olvidado...</h1>
+      
+      <p>
+        Hola de nuevo. Si estás leyendo esto, es porque lograste entrar.
+        <br><br>
+        Sé que las cosas no terminaron de la mejor manera, pero hice esta pequeña página para decirte lo mucho que me importas. A veces es difícil decir las cosas en persona, así que dejé que mi código hablara por mí. ❤️
+      </p>
+
+      <div class="promesas">
+        <h3>Mis Promesas ❤️</h3>
+        <ul>
+          <li>Escucharte más y entenderte mejor.</li>
+          <li>No pelear por bobadas (y aceptar cuando tienes la razón, que es casi siempre).</li>
+          <li>Hacer que cada día cuente cuando estemos juntos.</li>
+        </ul>
+      </div>
+
+      <!-- Tu botón de WhatsApp -->
+      <a href="https://wa.me/573143064028?text=Vi%20la%20pagina%20que%20me%20creaste...%20y%20tenemos%20que%20hablar%20❤️" class="btn-perdon" target="_blank">
+        ¿Te parece si hablamos? ❤️
+      </a>
+    </div>
+  </div>
+
+  <!-- La magia en JavaScript -->
+  <script>
+    const btnAbrir = document.getElementById('btn-abrir');
+    const pantallaBloqueo = document.getElementById('pantalla-bloqueo');
+    const contenidoCarta = document.getElementById('contenido-carta');
+    const miMusica = document.getElementById('miMusica');
+
+    btnAbrir.addEventListener('click', () => {
+      // 1. Le damos Play a la música (Safari ahora sí nos deja)
+      miMusica.play();
+
+      // 2. Desaparecemos la pantalla negra con un efecto suave
+      pantallaBloqueo.style.opacity = "0";
+
+      // 3. Hacemos que la carta aparezca mágicamente
+      contenidoCarta.style.opacity = "1";
+      contenidoCarta.style.pointerEvents = "auto";
+
+      // 4. Borramos la pantalla de bloqueo totalmente después de 1.5 segundos
+      setTimeout(() => {
+        pantallaBloqueo.style.display = "none";
+      }, 1500);
+    });
+  </script>
 
 </body>
 </html>
