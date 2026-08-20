@@ -25,7 +25,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     if (response.ok) {
       msg.style.color = "#4CAF50"; // Verde romántico
-      msg.textContent = "Respuesta correcta. Entrando a nuestro nidito...";
+      msg.textContent = "Respuesta correcta. Entrando a nuestro nidito :3.";
       
       // Aquí la rediriges a la página de los mensajes bonitos
       setTimeout(() => {
@@ -34,6 +34,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       
     } else {
       msg.style.color = "#FF5252"; // Rojo de "te equivocaste"
+      
       msg.textContent = "Respuesta incorrecta... ¿Ya te olvidaste?:(.";
     }
   } catch (error) {
