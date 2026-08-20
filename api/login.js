@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   // AQUÍ PONES LAS RESPUESTAS VALIDAS (En minúsculas)
   // Puedes poner varias opciones por si acaso jaja
-  if (respuesta === "Marianita" || respuesta === "Mariana" || respuesta === "Prueba") {
+  if (respuesta === "marianita" || respuesta === "mariana" || respuesta === "prueba") {
     
     // Si acierta, le damos paso verde
     return res.status(200).json({ message: "Login correcto" });
