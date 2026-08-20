@@ -122,20 +122,20 @@
   <div id="contenido-carta">
     <div class="carta-container">
       <span class="corazon">❤️</span>
-      <h1>Sabía que no lo habías olvidado...</h1>
+      <h1>Sabía que no lo habías olvidado jajaj :c...</h1>
       
       <p>
-        Hola de nuevo. Si estás leyendo esto, es porque lograste entrar.
+        Holiss. Si estás leyendo esto, es porque lograste entrar (No esperaba menos jaj).
         <br><br>
-        Sé que las cosas no terminaron de la mejor manera, pero hice esta pequeña página para decirte lo mucho que me importas. A veces es difícil decir las cosas en persona, así que dejé que mi código hablara por mí. ❤️
+        Sé que las cosas entre los dos no terminaron de la mejor manera, pero hice esta pequeña página para decirte lo mucho que me importas. A veces es difícil decir las cosas en persona, así que dejé que lo que mejor se hacer, hablara por mí. ❤️
       </p>
 
       <div class="promesas">
-        <h3>Mis Promesas ❤️</h3>
+        <h3>Alguna de mis Promesas son:</h3>
         <ul>
           <li>Escucharte más y entenderte mejor.</li>
           <li>No pelear por bobadas (y aceptar cuando tienes la razón, que es casi siempre).</li>
-          <li>Hacer que cada día cuente cuando estemos juntos.</li>
+          <li>Hacer que cada día cuente, cuando estemos juntos.</li>
         </ul>
       </div>
 
@@ -148,26 +148,50 @@
 
   <!-- La magia en JavaScript -->
   <script>
+    // MAGIA DE LA CARTA SELLADA Y MÚSICA
     const btnAbrir = document.getElementById('btn-abrir');
     const pantallaBloqueo = document.getElementById('pantalla-bloqueo');
     const contenidoCarta = document.getElementById('contenido-carta');
     const miMusica = document.getElementById('miMusica');
-
     btnAbrir.addEventListener('click', () => {
-      // 1. Le damos Play a la música (Safari ahora sí nos deja)
       miMusica.play();
-
-      // 2. Desaparecemos la pantalla negra con un efecto suave
       pantallaBloqueo.style.opacity = "0";
-
-      // 3. Hacemos que la carta aparezca mágicamente
       contenidoCarta.style.opacity = "1";
       contenidoCarta.style.pointerEvents = "auto";
-
-      // 4. Borramos la pantalla de bloqueo totalmente después de 1.5 segundos
-      setTimeout(() => {
-        pantallaBloqueo.style.display = "none";
-      }, 1500);
+      setTimeout(() => { pantallaBloqueo.style.display = "none"; }, 1500);
+    });
+    // MAGIA DE LA LLUVIA DE FOTOS
+    const btnRecuerdos = document.getElementById('btn-recuerdos');
+    
+    // Aquí están los nombres de las 3 fotos que debes guardar
+    const imagenes = ['/fotos/foto1.jpg', '/fotos/foto2.jpg', '/fotos/foto3.jpg'];
+    btnRecuerdos.addEventListener('click', () => {
+      // Hacemos que caigan 15 fotos en total, una tras otra
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const polaroid = document.createElement('div');
+          polaroid.classList.add('polaroid');
+          
+          // Elige una foto al azar de las 3
+          const imgAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
+          
+          // La pone en una posición horizontal aleatoria
+          polaroid.style.left = `${Math.random() * 80}%`;
+          
+          // Le da una velocidad de caída aleatoria (entre 4 y 8 segundos)
+          polaroid.style.animationDuration = `${Math.random() * 4 + 4}s`; 
+          
+          // Agrega la foto al cuadrito blanco
+          polaroid.innerHTML = `<img src="${imgAleatoria}" alt="recuerdo">`;
+          
+          // Añade la foto a la pantalla
+          document.body.appendChild(polaroid);
+          // Borra la foto del código después de 9 segundos para no trabar el celular
+          setTimeout(() => {
+            polaroid.remove();
+          }, 9000);
+        }, i * 400); // Tira una nueva foto cada casi medio segundo
+      }
     });
   </script>
 
