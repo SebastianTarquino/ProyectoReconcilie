@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Nuestra Historia ❤️</title>
+  <title>Nuestra Historia 💘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     /* ================================
-       CONFIGURACIÓN GENERAL (Tu diseño original)
+       CONFIGURACIÓN GENERAL
        ================================ */
     * { box-sizing: border-box; }
 
@@ -56,15 +56,28 @@
     .promesas li { margin-bottom: 14px; color: #dddddd; font-size: 16px; line-height: 1.5; }
     .promesas li::marker { color: #ff5c7c; }
 
+    /* ESTILOS DE LOS BOTONES AHORA JUNTOS */
+    .botones-container {
+      display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap;
+    }
+
+    .btn-perdon, .btn-recuerdos {
+      padding: 16px 25px; color: white; text-decoration: none; font-size: 16px; font-weight: bold;
+      border-radius: 50px; border: none; cursor: pointer; transition: 0.3s ease;
+    }
+
     .btn-perdon {
-      display: inline-block; margin-top: 40px; padding: 16px 32px; color: white;
-      text-decoration: none; font-size: 16px; font-weight: bold;
-      background: linear-gradient(135deg, #ff416c, #ff4b5c); border-radius: 50px;
+      background: linear-gradient(135deg, #ff416c, #ff4b5c);
       box-shadow: 0 8px 25px rgba(255, 65, 108, 0.35);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
     .btn-perdon:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 12px 35px rgba(255, 65, 108, 0.55); background: linear-gradient(135deg, #ff1744, #ff416c); }
     .btn-perdon:active { transform: scale(0.97); }
+
+    .btn-recuerdos {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d);
+      box-shadow: 0 8px 25px rgba(253, 29, 29, 0.35);
+    }
+    .btn-recuerdos:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 12px 35px rgba(253, 29, 29, 0.55); background: linear-gradient(135deg, #fd1d1d, #fcb045); }
 
     .corazon { display: block; margin: 0 auto 15px auto; font-size: 45px; animation: flotar 2s ease-in-out infinite; }
 
@@ -76,15 +89,15 @@
       body { padding: 15px; } .carta-container { padding: 30px 22px; border-radius: 20px; }
       h1 { font-size: 28px; } p { font-size: 16px; line-height: 1.7; }
       .promesas { padding: 20px; } .promesas li { font-size: 15px; }
-      .btn-perdon { width: 100%; padding: 15px 20px; } .corazon { font-size: 38px; }
+      .btn-perdon, .btn-recuerdos { width: 100%; padding: 15px 20px; } .corazon { font-size: 38px; }
     }
 
     /* ================================
-       NUEVO: OVERLAY "CARTA SELLADA"
+       OVERLAY "CARTA SELLADA"
        ================================ */
     #pantalla-bloqueo {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: #100912; /* Color de fondo oscuro */
+      background: #100912;
       z-index: 9999;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       transition: opacity 1.5s ease;
@@ -100,10 +113,32 @@
 
     #btn-abrir:hover { transform: scale(1.05); }
 
-    /* Ocultamos la carta al inicio */
     #contenido-carta {
       opacity: 0; pointer-events: none; transition: opacity 2s ease;
       width: 100%; display: flex; justify-content: center; align-items: center;
+    }
+
+    /* ================================
+       NUEVO: LAS POLAROIDS FLOTANTES
+       ================================ */
+    .polaroid {
+      position: fixed;
+      top: -200px;
+      width: 180px;
+      background: white;
+      padding: 10px 10px 40px 10px; /* Borde blanco estilo foto antigua */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      z-index: 1000;
+      pointer-events: none; /* Para que no bloqueen los clics a la carta */
+      animation: caer linear forwards;
+    }
+    .polaroid img { width: 100%; height: 160px; object-fit: cover; }
+    
+    @keyframes caer {
+      0% { top: -200px; opacity: 0; transform: rotate(-15deg); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 120vh; opacity: 0; transform: rotate(15deg); }
     }
   </style>
 </head>
@@ -118,16 +153,16 @@
     <button id="btn-abrir">💌 Toca para abrir la carta</button>
   </div>
 
-  <!-- Contenedor que envuelve toda tu carta para que aparezca después -->
+  <!-- Contenedor que envuelve toda tu carta -->
   <div id="contenido-carta">
     <div class="carta-container">
-      <span class="corazon">❤️</span>
+      <span class="corazon">💘</span>
       <h1>Sabía que no lo habías olvidado jajaj :c...</h1>
       
       <p>
-        Holiss. Si estás leyendo esto, es porque lograste entrar (No esperaba menos jaj).
+        Holiss... Si estás leyendo esto, es porque lograste entrar (No esperaba menos jaj).
         <br><br>
-        Sé que las cosas entre los dos no terminaron de la mejor manera, pero hice esta pequeña página para decirte lo mucho que me importas. A veces es difícil decir las cosas en persona, así que dejé que lo que mejor se hacer, hablara por mí. ❤️
+        Sé que las cosas entre los dos no terminaron de la mejor manera, pero hice esta pequeña página para decirte lo mucho que me importas. A veces es difícil decir las cosas en persona, así que dejé que lo que mejor se hacer, hablara por mí. 💘
       </p>
 
       <div class="promesas">
@@ -139,10 +174,17 @@
         </ul>
       </div>
 
-      <!-- Tu botón de WhatsApp -->
-      <a href="https://wa.me/573143064028?text=Vi%20la%20pagina%20que%20me%20creaste...%20y%20tenemos%20que%20hablar%20❤️" class="btn-perdon" target="_blank">
-        ¿Te parece si hablamos? ❤️
-      </a>
+      <!-- AQUÍ METIMOS TUS DOS BOTONES JUNTOS -->
+      <div class="botones-container">
+        <!-- Tu botón de WhatsApp -->
+        <a href="https://wa.me/573143064028?text=Vi%20la%20pagina%20que%20me%20creaste...%20y%20tenemos%20que%20hablar%20💘" class="btn-perdon" target="_blank">
+          ¿Te parece si hablamos? 💘
+        </a>
+
+        <!-- NUEVO: El botón de las fotos -->
+        <button class="btn-recuerdos" id="btn-recuerdos">Nuestros recuerdos 📸</button>
+      </div>
+
     </div>
   </div>
 
@@ -153,6 +195,7 @@
     const pantallaBloqueo = document.getElementById('pantalla-bloqueo');
     const contenidoCarta = document.getElementById('contenido-carta');
     const miMusica = document.getElementById('miMusica');
+
     btnAbrir.addEventListener('click', () => {
       miMusica.play();
       pantallaBloqueo.style.opacity = "0";
@@ -160,11 +203,13 @@
       contenidoCarta.style.pointerEvents = "auto";
       setTimeout(() => { pantallaBloqueo.style.display = "none"; }, 1500);
     });
+
     // MAGIA DE LA LLUVIA DE FOTOS
     const btnRecuerdos = document.getElementById('btn-recuerdos');
     
     // Aquí están los nombres de las 3 fotos que debes guardar
     const imagenes = ['/fotos/foto1.jpg', '/fotos/foto2.jpg', '/fotos/foto3.jpg'];
+
     btnRecuerdos.addEventListener('click', () => {
       // Hacemos que caigan 15 fotos en total, una tras otra
       for (let i = 0; i < 15; i++) {
@@ -186,10 +231,12 @@
           
           // Añade la foto a la pantalla
           document.body.appendChild(polaroid);
+
           // Borra la foto del código después de 9 segundos para no trabar el celular
           setTimeout(() => {
             polaroid.remove();
           }, 9000);
+
         }, i * 400); // Tira una nueva foto cada casi medio segundo
       }
     });
